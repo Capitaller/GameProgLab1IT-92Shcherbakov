@@ -17,19 +17,11 @@ public class MovePlayer : MonoBehaviour
     {
         transform.Translate(
             Input.GetAxis("Horizontal") * 5f * Time.deltaTime,
-            Input.GetAxis("Vertical") * 5f * Time.deltaTime, 0f);
+            0f, 0f);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (playerIsGrounded == true)
-              {
-
-                rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
-                //playerIsGrounded = false;
-
-
-            }
-            
+        if (Input.GetKeyDown(KeyCode.Space) && playerIsGrounded)
+        {        
+            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);          
         }
 
 
